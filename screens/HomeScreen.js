@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
   },
 })
 
-export default HomeScreen = ({ navigation }) => {
+export default HomeScreen = props => {
+  const { navigation } = props
+
   const [articles, setArticles] = useState([])
   useEffect(() => {
     fetchArticles()
