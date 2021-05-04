@@ -9,10 +9,12 @@ const styles = StyleSheet.create({
   },
 })
 
-export default ArticleScreen = () => {
+export default ArticleScreen = ({ route }) => {
+  const { article } = route.params
+  // console.log(articles)
   return (
     <SafeAreaView style={styles.container}>
-      <WebView source={{ uri: "https://www.google.com/" }} />
+      <WebView source={{ uri: article.url }} />
     </SafeAreaView>
   )
 }

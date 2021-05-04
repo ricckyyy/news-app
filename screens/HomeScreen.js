@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
-import { StyleSheet, View, FlatList, SafeAreaView } from "react-native"
+import { StyleSheet, FlatList, SafeAreaView } from "react-native"
+
 import ListItem from "../components/ListItem"
 import Constants from "expo-constants"
 import axios from "axios"
@@ -10,6 +11,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: Platform.OS === "android" ? 20 : 0,
   },
 })
 
@@ -25,9 +27,9 @@ export default HomeScreen = props => {
     try {
       const response = await axios.get(URL)
       setArticles(response.data.articles)
-      console.log(response)
+      // console.log(response)
     } catch (error) {
-      console.error(error)
+      // console.error(error)
     }
   }
   return (
@@ -39,7 +41,7 @@ export default HomeScreen = props => {
             ImageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={() => navigation.navigate("Article")}
+            onPress={() => navigation.navigate("Article", { article: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
