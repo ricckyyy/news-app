@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react"
-import { StyleSheet, FlatList, SafeAreaView } from "react-native"
+import React, { useState, useEffect } from 'react'
+import { StyleSheet, FlatList, SafeAreaView } from 'react-native'
 
-import ListItem from "../components/ListItem"
-import Constants from "expo-constants"
-import axios from "axios"
+import ListItem from '../components/ListItem'
+import Constants from 'expo-constants'
+import axios from 'axios'
 
 const URL = `https://newsapi.org/v2/top-headlines?country=jp&apiKey=${Constants.manifest.extra.newsApiKey}`
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    paddingTop: Platform.OS === "android" ? 20 : 0,
+    backgroundColor: '#fff',
+    paddingTop: 0
   },
 })
 
@@ -41,7 +41,7 @@ export default HomeScreen = props => {
             ImageUrl={item.urlToImage}
             title={item.title}
             author={item.author}
-            onPress={() => navigation.navigate("Article", { article: item })}
+            onPress={() => navigation.navigate('Article', { article: item })}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
